@@ -2,11 +2,12 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import { fetchFruits } from '../actions'
+import DataListing from './Data'
 
 const App = (props) => {
   useEffect(() => {
     props.dispatch(fetchFruits())
-  })
+  } ,[])
 
   return (
     <>
@@ -17,13 +18,15 @@ const App = (props) => {
             <li key={fruit}>{fruit}</li>
           ))}
         </ul>
+        <DataListing/>
       </div>
     </>
   )
 }
 const mapStateToProps = (globalState) => {
   return {
-    fruits: globalState.fruits
+    fruits: globalState.fruits,
+    data: globalState.data
   }
 }
 
